@@ -1,5 +1,5 @@
 # Konstanten - werden groß geschrieben
-#Test für inteliijj
+# Datei wird ab jetzt über Git verwaltet
 
 FENSTER_BREITE= 800
 FENSTER_HOEHE = 480
