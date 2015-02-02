@@ -52,7 +52,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
       if(@leben <= 0)
         @app.image "gameover.jpg", width: 800, height: 480, left:0, right: 0
-        require "frogger4.rb"
+
       elsif @leben == 1
         @bluftfleck2.move(@x_position,@y_position)
         @x_position = @start_position_x
