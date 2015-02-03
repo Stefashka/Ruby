@@ -31,6 +31,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       x_position = rand(40..680)
       y_position = rand(40..360)
       @image.move(x_position, y_position)
+
     end
 
 
@@ -129,7 +130,6 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
         unterer_rand = @sammelobjekt.y_position + 30
 
         if(@x_position >= linker_rand and @x_position <= rechter_rand) and (@y_position >= oberer_rand and @y_position <= unterer_rand)
-          alert "hallo"
           @punkte += 10
           @sammelobjekt.neuer_ort
         end
