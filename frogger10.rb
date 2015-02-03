@@ -38,7 +38,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
   end
 
 
-#Klasse Frosch
+#Klasse Froschh
 
   class Frosch
 
