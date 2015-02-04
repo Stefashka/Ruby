@@ -43,9 +43,9 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
   class Frosch
 
-    attr_accessor :x_position, :y_position
+    attr_accessor :x_position, :y_position, :punkte
 
-    def initialize(app,apfel)
+    def initialize(app,fliege)
       #speichert die Referenz zum Shoes Objekt um auf dessen Methoden zuzugreifen
       @app = app
       #position initialisieren
@@ -67,7 +67,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       @lebensherz3 = @app.image "herz3.png", width: 20, height: 20, right: 20, top: 10
       @bluftfleck = @app.image "blut.png", width: 40, height: 40, left: 20, top: 10
       @bluftfleck2 = @app.image "blut2.png", width: 40, height: 40, left: 20, top: 10
-      @sammelobjekt = apfel
+      @sammelobjekt = fliege
       @punkte = 0
 
 
@@ -130,9 +130,10 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
         oberer_rand = @sammelobjekt.y_position - 30
         unterer_rand = @sammelobjekt.y_position + 30
 
-        if(@x_position >= linker_rand and @x_position <= rechter_rand) and (@y_position >= oberer_rand and @y_position <= unterer_rand)
+        if(@x_position >= linker_rand and @x_position <= rechter_rand) and (@y_position >= oberer_rand and @y_position <= unterer_rand) then
           @punkte += 10
           @sammelobjekt.neuer_ort
+          alert "Du hast #{@punkte} Punkte gesammelt"
         end
 
       end
@@ -144,9 +145,6 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       @y_position = y
       @image.move(@x_position, @y_position)
     end
-
-
-
 
   end
 
@@ -257,10 +255,10 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
 #Erzeugen der Sammelobjekte
 
-  apfel = Sammelobjekt.new(self,"apfel.png")
+  fliege = Sammelobjekt.new(self,"fliege.png")
 
 #Erstellen des Frosches
-  frosch = Frosch.new(self,apfel)
+  frosch = Frosch.new(self,fliege)
 
 
 
@@ -293,7 +291,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
   auto5.bewegung
   auto6.bewegung
 
-
+#para frosch.punkte, top: 30, left: 30
 
 
 
