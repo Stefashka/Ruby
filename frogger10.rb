@@ -11,26 +11,51 @@ BEGRENZUNG_LINKS = 40
 
 Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
-  image "Frogger_Hintergrund_Gimp-2.png",width: FENSTER_BREITE, height: FENSTER_HOEHE
+  image "Frogger_Hintergrund_Gimp.png",width: FENSTER_BREITE, height: FENSTER_HOEHE
 
-#test
+  class Sammelobjekt
+
+    attr_accessor :y_position, :x_position
+
+    def initialize (app, pfad)
+
+      @app = app
+      @image = @app.image pfad, width: 30, height: 30
+      @x_position = rand(40..680)
+      @y_position = rand(40..360)
+      @image.move(@x_position, @y_position)
+
+
+    end
+
+    def neuer_ort
+      x_position = rand(40..680)
+      y_position = rand(40..360)
+      @image.move(x_position, y_position)
+
+    end
+
+
+  end
+
+
 #Klasse Frosch
 
   class Frosch
 
     attr_accessor :x_position, :y_position
 
-    def initialize(app, start_x, start_y)
+    def initialize(app,apfel)
       #speichert die Referenz zum Shoes Objekt um auf dessen Methoden zuzugreifen
       @app = app
       #position initialisieren
-      @x_position = start_x
-      @y_position = start_y
+      @x_position = 400
+      @y_position = 440
       #sprungweite initialisieren
       @sprungweite = 40
       #anfangsposition initialisieren damit der Frosch bei Lebenverlust auf diese Position zurückgesetzt wird
-      @start_position_x = start_x
-      @start_position_y = start_y
+      @start_position_x = 400
+      @start_position_y = 440
       #Anzahl der Leben - fester Wert, da dieser sich nicht ändern soll
       @leben = 3
       #Bild dem Objekt zuweisen (@app.image da dies Shoes Syntax ist)
@@ -42,6 +67,9 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       @lebensherz3 = @app.image "herz3.png", width: 20, height: 20, right: 20, top: 10
       @bluftfleck = @app.image "blut.png", width: 40, height: 40, left: 20, top: 10
       @bluftfleck2 = @app.image "blut2.png", width: 40, height: 40, left: 20, top: 10
+      @sammelobjekt = apfel
+      @punkte = 0
+
 
     end
 
@@ -71,7 +99,6 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       end
 
 
-
     end
 
     #Diese Methode soll Tastedruckevent anlegen (wie Animation). Je nach Tastendruck wird hier definiert was mit dem
@@ -97,6 +124,17 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
         if @y_position <= BEGRENZUNG_OBEN
           alert "Gewonnen!!!!"
         end
+
+        linker_rand = @sammelobjekt.x_position - 30
+        rechter_rand = @sammelobjekt.x_position + 35
+        oberer_rand = @sammelobjekt.y_position - 30
+        unterer_rand = @sammelobjekt.y_position + 30
+
+        if(@x_position >= linker_rand and @x_position <= rechter_rand) and (@y_position >= oberer_rand and @y_position <= unterer_rand)
+          @punkte += 10
+          @sammelobjekt.neuer_ort
+        end
+
       end
     end
      #Bewegt den Frosch auf die bestimmte Position (z.B. Baumstamm) - Wichtig damit der Frosch auf dem Baumstamm
@@ -106,6 +144,10 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       @y_position = y
       @image.move(@x_position, @y_position)
     end
+
+
+
+
   end
 
 # Klasse Schwimmobjekt
@@ -204,6 +246,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
   end
 
 
+
   #Hauptprogramm
 
 #Erstellen der Baumstämme
@@ -212,8 +255,15 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
   baumstamm3 = Schwimmobjekt.new(self,"fass.png",-250,80,2,150,30)
   baumstamm4 = Schwimmobjekt.new(self,"schildkroete.png",-250,160,1,100,50)
 
+#Erzeugen der Sammelobjekte
+
+  apfel = Sammelobjekt.new(self,"apfel.png")
+
 #Erstellen des Frosches
-  frosch = Frosch.new(self, FENSTER_BREITE/2, 440)
+  frosch = Frosch.new(self,apfel)
+
+
+
 
   #starte die Bausmtammanimation und übergebe das objekt frosch
   baumstamm1.start(frosch)
@@ -223,6 +273,8 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
   #starte die Froschanimation
   frosch.start
+
+
 
 #Erstellen des Autos
 
@@ -240,6 +292,8 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
   auto4.bewegung
   auto5.bewegung
   auto6.bewegung
+
+
 
 
 
