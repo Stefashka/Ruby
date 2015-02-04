@@ -120,7 +120,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
         end
         #bewege den frosch
         @image.move(@x_position, @y_position)
-        #sind wir am Ziel?
+
         if @y_position <= BEGRENZUNG_OBEN
           alert "Gewonnen!!!!"
         end
@@ -131,7 +131,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
         unterer_rand = @sammelobjekt.y_position + 30
 
         if(@x_position >= linker_rand and @x_position <= rechter_rand) and (@y_position >= oberer_rand and @y_position <= unterer_rand) then
-          @punkte += 10
+          @punkte += 10 # Problem: Da dies im Keypress-Event statt findet, erfolgt die Abfrage erst, wenn der Key gedrückt wird.
           @sammelobjekt.neuer_ort
           alert "Du hast #{@punkte} Punkte gesammelt"
         end
@@ -144,6 +144,14 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       @x_position = x
       @y_position = y
       @image.move(@x_position, @y_position)
+    end
+
+    #def punktausgabe
+
+      #@app.animate (60) do
+       # para "Du hast #{@punkte} Punkte gesammelt", top: 30, left: 30
+     # end
+
     end
 
   end
@@ -291,8 +299,8 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
   auto5.bewegung
   auto6.bewegung
 
-#para frosch.punkte, top: 30, left: 30
 
+  #frosch.punktausgabe
 
 
 
