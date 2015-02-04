@@ -1,5 +1,6 @@
 # Konstanten - werden groß geschrieben
 # Datei wird ab jetzt über Git verwaltet
+#DIes ist ein Test für Hanna
 
 FENSTER_BREITE= 800
 FENSTER_HOEHE = 480
