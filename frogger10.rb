@@ -146,13 +146,13 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       @image.move(@x_position, @y_position)
     end
 
-    #def punktausgabe
+   # def punktausgabe
 
-      #@app.animate (60) do
+     # @app.animate (60) do
        # para "Du hast #{@punkte} Punkte gesammelt", top: 30, left: 30
      # end
 
-    end
+    #end
 
   end
 
@@ -300,7 +300,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
   auto6.bewegung
 
 
-  #frosch.punktausgabe
+  #para frosch.punktausgabe
 
 
 
