@@ -63,10 +63,10 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       #Der Frosch erscheint an dieser Position
       @image.move(@x_position, @y_position)
       @lebensherz1 = @app.image "herz.png", width: 20, height: 20,  right: 100, top: 10
-      @lebensherz2 = @app.image "herz2.png", width: 20, height: 20, right: 60, top: 10
-      @lebensherz3 = @app.image "herz3.png", width: 20, height: 20, right: 20, top: 10
+      @lebensherz2 = @app.image "herz.png", width: 20, height: 20, right: 60, top: 10
+      @lebensherz3 = @app.image "herz.png", width: 20, height: 20, right: 20, top: 10
       @bluftfleck = @app.image "blut.png", width: 40, height: 40, left: 20, top: 10
-      @bluftfleck2 = @app.image "blut2.png", width: 40, height: 40, left: 20, top: 10
+      @bluftfleck2 = @app.image "blut.png", width: 40, height: 40, left: 20, top: 10
       @sammelobjekt = fliege
       @punkte = 0
 
@@ -149,7 +149,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
    # def punktausgabe
 
      # @app.animate (60) do
-       # para "Du hast #{@punkte} Punkte gesammelt", top: 30, left: 30
+     #para "Du hast #{@punkte} Punkte gesammelt", top: 30, left: 30
      # end
 
     #end
