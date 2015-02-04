@@ -29,9 +29,9 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
     end
 
     def neuer_ort
-      x_position = rand(40..680)
-      y_position = rand(40..360)
-      @image.move(x_position, y_position)
+      @x_position = rand(40..680)
+      @y_position = rand(40..360)
+      @image.move(@x_position, @y_position)
 
     end
 
