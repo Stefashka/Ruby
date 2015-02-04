@@ -10,7 +10,7 @@ BEGRENZUNG_LINKS = 40
 
 Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
-  image "Frogger_Hintergrund_Gimp.png",width: FENSTER_BREITE, height: FENSTER_HOEHE
+  image "Frogger_Hintergrund_Gimp-2.png",width: FENSTER_BREITE, height: FENSTER_HOEHE
 
 #test
 #Klasse Frosch
