@@ -13,6 +13,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
   image "Frogger_Hintergrund_Gimp.png",width: FENSTER_BREITE, height: FENSTER_HOEHE
 
+
   class Sammelobjekt
 
     attr_accessor :y_position, :x_position
@@ -122,7 +123,8 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
         @image.move(@x_position, @y_position)
 
         if @y_position <= BEGRENZUNG_OBEN
-          alert "Gewonnen!!!!"
+          @app.image "gewonnen.jpg", width: 800, height: 480, left:0, right: 0
+          @app.para "#{@punkte}:Punkte gesammelt!", top: 250, left: 400, font: "Cambria, 26"
         end
 
         linker_rand = @sammelobjekt.x_position - 30
@@ -133,7 +135,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
         if(@x_position >= linker_rand and @x_position <= rechter_rand) and (@y_position >= oberer_rand and @y_position <= unterer_rand) then
           @punkte += 10 # Problem: Da dies im Keypress-Event statt findet, erfolgt die Abfrage erst, wenn der Key gedrückt wird.
           @sammelobjekt.neuer_ort
-          alert "Du hast #{@punkte} Punkte gesammelt"
+          @app.para "#{@punkte}:Punkte", top: 30, left: 30, font: "Cambria, 18"
         end
 
       end
@@ -146,13 +148,15 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       @image.move(@x_position, @y_position)
     end
 
-   # def punktausgabe
+=begin
+   def punktausgabe
 
-     # @app.animate (60) do
-     #para "Du hast #{@punkte} Punkte gesammelt", top: 30, left: 30
-     # end
+     @app.animate (1) do
+     @app.para "Du hast #{@punkte} Punkte gesammelt", top: 30, left: 30
+      end
 
-    #end
+    end
+=end
 
   end
 
@@ -261,6 +265,8 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
   baumstamm3 = Schwimmobjekt.new(self,"fass.png",-250,80,2,150,30)
   baumstamm4 = Schwimmobjekt.new(self,"schildkroete.png",-250,160,1,100,50)
 
+  array_baumstamm = [baumstamm1, baumstamm2, baumstamm3, baumstamm4]
+
 #Erzeugen der Sammelobjekte
 
   fliege = Sammelobjekt.new(self,"fliege.png")
@@ -270,12 +276,13 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
 
 
-
   #starte die Bausmtammanimation und übergebe das objekt frosch
   baumstamm1.start(frosch)
   baumstamm2.start(frosch)
   baumstamm3.start(frosch)
   baumstamm4.start(frosch)
+
+
 
   #starte die Froschanimation
   frosch.start
@@ -291,6 +298,8 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
   auto4 = Fahrzeug.new(self, "Frogger_Auto_Hellblau.png",60,30,60,400,1, 1, frosch)
   auto5 = Fahrzeug.new(self, "Frogger_Auto_Hellblau.png",60,30,60,400,1, 1, frosch)
 
+  array_auto = [auto, auto6, auto2, auto3, auto4, auto5]
+
   #starte die Autobewegung
   auto.bewegung
   auto2.bewegung
@@ -300,7 +309,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
   auto6.bewegung
 
 
-  #para frosch.punktausgabe
+ #frosch.punktausgabe
 
 
 
