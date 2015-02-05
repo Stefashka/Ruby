@@ -123,8 +123,9 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
         @image.move(@x_position, @y_position)
 
         if @y_position <= BEGRENZUNG_OBEN
-          @app.image "gewonnen.jpg", width: 800, height: 480, left:0, right: 0
-          @app.para "#{@punkte}:Punkte gesammelt!", top: 250, left: 400, font: "Cambria, 26"
+          @app.image "gewonnen2.jpg", width: 800, height: 480, left:0, right: 0
+          @app.para "#{@punkte}:Punkte gesammelt!", top: 350, left: 200, font: "Cambria, 26"
+          @app.para "Gewonnen!", top: 450, left: 100, font: "Cambria, 26"
         end
 
         linker_rand = @sammelobjekt.x_position - 30
