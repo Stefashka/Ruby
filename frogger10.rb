@@ -22,7 +22,6 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       @y_position = rand(40..360)
       @image.move(@x_position, @y_position)
 
-
     end
 
     def neuer_ort
@@ -31,7 +30,6 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       @image.move(@x_position, @y_position)
 
     end
-
 
   end
 
@@ -67,7 +65,6 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       @sammelobjekt = fliege
       @punkte = 0
 
-
     end
 
     #Diese Methode soll aufgerufen werden, wenn der Frosch sein leben verliert
@@ -95,8 +92,6 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
         alert "Leben verloren. Du hast nur noch #{@leben} Leben!"
         @lebensherz1.remove
       end
-
-
     end
 
     #Diese Methode soll Tastedruckevent anlegen (wie Animation). Je nach Tastendruck wird hier definiert was mit dem
@@ -145,7 +140,6 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       @y_position = y
       @image.move(@x_position, @y_position)
     end
-
   end
 
 # Klasse Schwimmobjekt
