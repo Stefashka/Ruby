@@ -1,7 +1,3 @@
-# Konstanten - werden groß geschrieben
-# Datei wird ab jetzt über Git verwaltet
-#DIes ist ein Test für Hanna
-
 FENSTER_BREITE= 800
 FENSTER_HOEHE = 480
 BEGRENZUNG_OBEN = 40
@@ -83,6 +79,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       if(@leben <= 0)
         @app.image "gameover.jpg", width: 800, height: 480, left:0, right: 0
 
+
       elsif @leben == 1
         @bluftfleck2.move(@x_position,@y_position)
         @x_position = @start_position_x
@@ -148,16 +145,6 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       @y_position = y
       @image.move(@x_position, @y_position)
     end
-
-=begin
-   def punktausgabe
-
-     @app.animate (1) do
-     @app.para "Du hast #{@punkte} Punkte gesammelt", top: 30, left: 30
-      end
-
-    end
-=end
 
   end
 
@@ -260,38 +247,29 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
   #Hauptprogramm
 
-#Erstellen der Baumstämme
+#Erstellen der Schwimmobjekte
   baumstamm1 = Schwimmobjekt.new(self,"Baumstamm.jpg",800,120,2,200,30)
   baumstamm2 = Schwimmobjekt.new(self,"Baumstamm.jpg",800,200,3,100,30)
-  baumstamm3 = Schwimmobjekt.new(self,"fass.png",-250,80,2,150,30)
-  baumstamm4 = Schwimmobjekt.new(self,"schildkroete.png",-250,160,1,100,50)
+  fass = Schwimmobjekt.new(self,"fass.png",-250,80,2,150,30)
+  schildkroete = Schwimmobjekt.new(self,"schildkroete.png",-250,160,1,100,50)
 
-  array_baumstamm = [baumstamm1, baumstamm2, baumstamm3, baumstamm4]
 
 #Erzeugen der Sammelobjekte
-
   fliege = Sammelobjekt.new(self,"fliege.png")
 
 #Erstellen des Frosches
   frosch = Frosch.new(self,fliege)
 
-
-
-  #starte die Bausmtammanimation und übergebe das objekt frosch
+#starte die Schwimmobjektanimation und übergebe das Objekt Frosch
   baumstamm1.start(frosch)
   baumstamm2.start(frosch)
-  baumstamm3.start(frosch)
-  baumstamm4.start(frosch)
+  fass.start(frosch)
+  schildkroete.start(frosch)
 
-
-
-  #starte die Froschanimation
+#starte die Froschanimation
   frosch.start
 
-
-
 #Erstellen des Autos
-
   auto = Fahrzeug.new(self, "Frogger_Auto_gelb.png",60,30,700,280,2, -1, frosch)
   auto6 = Fahrzeug.new(self, "Frogger_Auto_gelb.png",60,30,700,280,2, -1, frosch)
   auto2 = Fahrzeug.new(self,"Frogger_Auto_Hellblau.png",60,30,60,320,4, 1, frosch)
@@ -299,19 +277,13 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
   auto4 = Fahrzeug.new(self, "Frogger_Auto_Hellblau.png",60,30,60,400,1, 1, frosch)
   auto5 = Fahrzeug.new(self, "Frogger_Auto_Hellblau.png",60,30,60,400,1, 1, frosch)
 
-  array_auto = [auto, auto6, auto2, auto3, auto4, auto5]
-
-  #starte die Autobewegung
+#starte die Autobewegung
   auto.bewegung
   auto2.bewegung
   auto3.bewegung
   auto4.bewegung
   auto5.bewegung
   auto6.bewegung
-
-
- #frosch.punktausgabe
-
 
 
 
