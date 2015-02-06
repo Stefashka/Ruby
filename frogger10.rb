@@ -38,7 +38,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
   class Frosch
 
-    attr_accessor :x_position, :y_position, :punkte
+    attr_accessor :x_position, :y_position, :punkte, :leben
 
     def initialize(app,fliege,fliege2)
       #speichert die Referenz zum Shoes Objekt um auf dessen Methoden zuzugreifen
@@ -77,7 +77,6 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       if(@leben <= 0)
         @app.image "gameover.jpg", width: 800, height: 480, left:0, right: 0
 
-
       elsif @leben == 1
         @bluftfleck2.move(@x_position,@y_position)
         @x_position = @start_position_x
@@ -92,6 +91,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
         @image.move(@x_position, @y_position)
         alert "Leben verloren. Du hast nur noch #{@leben} Leben!"
         @lebensherz1.remove
+
       end
     end
 
@@ -118,7 +118,6 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
         if @y_position <= BEGRENZUNG_OBEN
           @app.image "gewonnen2.jpg", width: 800, height: 480, left:0, right: 0
           @app.para "#{@punkte} Punkte gesammelt!", top: 400, left: 250, font: "Cambria, 26"
-
         end
 
         #Für das Sammelobjekt 1
@@ -132,6 +131,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
           @sammelobjekt.neuer_ort
           @app.para "#{@punkte} Punkte", top: 30, left: 30, font: "Cambria, 18"
         end
+
         #Für das Sammelobjekt2
         linker_rand = @sammelobjekt2.x_position - 30
         rechter_rand = @sammelobjekt2.x_position + 35
@@ -142,6 +142,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
           @punkte += 10 # Problem: Da dies im Keypress-Event statt findet, erfolgt die Abfrage erst, wenn der Key gedrückt wird.
           @sammelobjekt2.neuer_ort
           @app.para "#{@punkte} Punkte", top: 30, left: 30, font: "Cambria, 18"
+
         end
 
       end
