@@ -40,7 +40,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
     attr_accessor :x_position, :y_position, :punkte
 
-    def initialize(app,fliege)
+    def initialize(app,fliege,fliege2)
       #speichert die Referenz zum Shoes Objekt um auf dessen Methoden zuzugreifen
       @app = app
       #position initialisieren
@@ -63,6 +63,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       @bluftfleck = @app.image "blut.png", width: 40, height: 40, left: 20, top: 10
       @bluftfleck2 = @app.image "blut.png", width: 40, height: 40, left: 20, top: 10
       @sammelobjekt = fliege
+      @sammelobjekt2 = fliege2
       @punkte = 0
 
     end
@@ -120,6 +121,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
         end
 
+        #Für das Sammelobjekt 1
         linker_rand = @sammelobjekt.x_position - 30
         rechter_rand = @sammelobjekt.x_position + 35
         oberer_rand = @sammelobjekt.y_position - 30
@@ -128,6 +130,17 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
         if(@x_position >= linker_rand and @x_position <= rechter_rand) and (@y_position >= oberer_rand and @y_position <= unterer_rand) then
           @punkte += 10 # Problem: Da dies im Keypress-Event statt findet, erfolgt die Abfrage erst, wenn der Key gedrückt wird.
           @sammelobjekt.neuer_ort
+          @app.para "#{@punkte} Punkte", top: 30, left: 30, font: "Cambria, 18"
+        end
+        #Für das Sammelobjekt2
+        linker_rand = @sammelobjekt2.x_position - 30
+        rechter_rand = @sammelobjekt2.x_position + 35
+        oberer_rand = @sammelobjekt2.y_position - 30
+        unterer_rand = @sammelobjekt2.y_position + 30
+
+        if(@x_position >= linker_rand and @x_position <= rechter_rand) and (@y_position >= oberer_rand and @y_position <= unterer_rand) then
+          @punkte += 10 # Problem: Da dies im Keypress-Event statt findet, erfolgt die Abfrage erst, wenn der Key gedrückt wird.
+          @sammelobjekt2.neuer_ort
           @app.para "#{@punkte} Punkte", top: 30, left: 30, font: "Cambria, 18"
         end
 
@@ -250,9 +263,10 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
 #Erzeugen der Sammelobjekte
   fliege = Sammelobjekt.new(self,"fliege.png")
+  fliege2 = Sammelobjekt.new(self,"fliege.png")
 
 #Erstellen des Frosches
-  frosch = Frosch.new(self,fliege)
+  frosch = Frosch.new(self,fliege,fliege2)
 
 #starte die Schwimmobjektanimation und übergebe das Objekt Frosch
   baumstamm1.start(frosch)
