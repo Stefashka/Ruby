@@ -1,3 +1,7 @@
+#Frogger-Spiel
+#Von: Olga Schuschugov, Jasmin Moesle, Ilona Frey, Stefanie Eichwald
+
+
 FENSTER_BREITE= 800
 FENSTER_HOEHE = 480
 BEGRENZUNG_OBEN = 40
@@ -117,10 +121,14 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
 
 
-        if (@y_position <= BEGRENZUNG_OBEN) and (@x_position >= 80 and @x_position<= 200 or @x_position >= 360 and @x_position<= 440 or @x_position >= 600 and @x_position<= 720 )
+        if (@y_position <= BEGRENZUNG_OBEN) and (@x_position >= 40 and @x_position<= 180 or @x_position >= 360 and @x_position<= 440 or @x_position >= 600 and @x_position<= 720 )
           @app.image "gewonnen2.jpg", width: 800, height: 480, left:0, right: 0
           @app.para "#{@punkte} Punkte gesammelt!", top: 400, left: 250, font: "Cambria, 26"
-        end
+
+          #if (@y_position <= BEGRENZUNG_OBEN) and (@x_position >= 0 and @x_position<= 30 or @x_position >= 240 and @x_position<= 340 or @x_position >= 480 and @x_position<= 560 )
+          #@leben -= 1
+          #end
+          end
 
         #Für das Sammelobjekt 1
         linker_rand = @sammelobjekt.x_position - 30
