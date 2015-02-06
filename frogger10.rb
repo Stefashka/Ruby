@@ -124,8 +124,8 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
         if @y_position <= BEGRENZUNG_OBEN
           @app.image "gewonnen2.jpg", width: 800, height: 480, left:0, right: 0
-          @app.para "#{@punkte}:Punkte gesammelt!", top: 350, left: 200, font: "Cambria, 26"
-          @app.para "Gewonnen!", top: 450, left: 100, font: "Cambria, 26"
+          @app.para "#{@punkte} Punkte gesammelt!", top: 400, left: 250, font: "Cambria, 26"
+
         end
 
         linker_rand = @sammelobjekt.x_position - 30
@@ -136,7 +136,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
         if(@x_position >= linker_rand and @x_position <= rechter_rand) and (@y_position >= oberer_rand and @y_position <= unterer_rand) then
           @punkte += 10 # Problem: Da dies im Keypress-Event statt findet, erfolgt die Abfrage erst, wenn der Key gedrückt wird.
           @sammelobjekt.neuer_ort
-          @app.para "#{@punkte}:Punkte", top: 30, left: 30, font: "Cambria, 18"
+          @app.para "#{@punkte} Punkte", top: 30, left: 30, font: "Cambria, 18"
         end
 
       end
@@ -261,8 +261,8 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
   #Hauptprogramm
 
 #Erstellen der Baumstämme
-  baumstamm1 = Schwimmobjekt.new(self,"Baumstamm.jpg",800,120,1,200,30)
-  baumstamm2 = Schwimmobjekt.new(self,"Baumstamm.jpg",800,200,1,100,30)
+  baumstamm1 = Schwimmobjekt.new(self,"Baumstamm.jpg",800,120,2,200,30)
+  baumstamm2 = Schwimmobjekt.new(self,"Baumstamm.jpg",800,200,3,100,30)
   baumstamm3 = Schwimmobjekt.new(self,"fass.png",-250,80,2,150,30)
   baumstamm4 = Schwimmobjekt.new(self,"schildkroete.png",-250,160,1,100,50)
 
