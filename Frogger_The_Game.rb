@@ -66,6 +66,8 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       @sammelobjekt2 = fliege2
       @punkte = 0
       @punktausgabe= @app.caption  "0 Punkte" , top: 30, left: 700
+      @timer = 30
+      @timerausgabe = @app.caption "30 Sekunden", top: 60, left: 700
 
     end
 
@@ -102,6 +104,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
     #Diese Methode soll Tastedruckevent anlegen (wie Animation). Je nach Tastendruck wird hier definiert was mit dem
     #Frosch passieren soll
     def start
+
       @app.keypress do |k|
         if k ==:down and @y_position <= BEGRENZUNG_UNTEN
           @y_position +=  @sprungweite
@@ -152,6 +155,16 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
         end
 
       end
+
+      @app.animate (1) do
+        @timer -= 1
+        @timerausgabe.replace ("#{@timer} Zeit")
+        if @timer <= 0
+          @app.image "gameover.jpg", width: 800, height: 480, left:0, right: 0
+          @app.para "Zeit vorbei... #{@punkte} Punkte verloren!!", top: 400, left: 150, font: "Cambria, 30"
+        end
+      end
+
     end
      #Bewegt den Frosch auf die bestimmte Position (z.B. Baumstamm) - Wichtig damit der Frosch auf dem Baumstamm
     #sitzen bleiben kann. Wird in der Klasse Schwimmobjekte verwendet.
