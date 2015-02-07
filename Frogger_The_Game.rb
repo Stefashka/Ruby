@@ -9,6 +9,22 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
   image "Frogger_Hintergrund_Gimp.png",width: FENSTER_BREITE, height: FENSTER_HOEHE
 
+  # Highscore Klasse
+  class Highscore
+
+    attr_accessor :name
+
+    def initialize(app)
+      @name = "name"
+      @app = app
+    end
+
+    def abfrage
+      #@app.rect(50, 50, 400, 400)
+      @name = @app.ask("Please enter your name")
+      #@app.para "#{@name} you reached ... Punkte"
+    end
+  end
 
   class Sammelobjekt
 
@@ -40,7 +56,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
     attr_accessor :x_position, :y_position, :punkte, :leben
 
-    def initialize(app,fliege,fliege2)
+    def initialize(app,fliege,fliege2,highscore)
       #speichert die Referenz zum Shoes Objekt um auf dessen Methoden zuzugreifen
       @app = app
       #position initialisieren
@@ -68,6 +84,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       @punktausgabe= @app.caption  "0 Punkte" , top: 30, left: 700
       @timer = 50
       @timerausgabe = @app.caption "50 Sekunden", top: 60, left: 700
+      @highscore = highscore
 
     end
 
@@ -124,10 +141,9 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
         if (@y_position <= BEGRENZUNG_OBEN) and (@x_position >= 40 and @x_position<= 180 or @x_position >= 320 and @x_position<= 440 or @x_position >= 600 and @x_position<= 720 )
           @app.image "gewonnen2.jpg", width: 800, height: 480, left:0, right: 0
-          @app.para "#{@punkte} Punkte gesammelt!", top: 400, left: 250, font: "Cambria, 26"
-          @app.keypress do
-            @app.close
-          end
+          @highscore.abfrage
+          @app.para "#{@highscore.name} du hast #{@punkte} Punkte gesammelt!", top: 400, left: 150, font: "Cambria, 26"
+
         end
 
         #Für das Sammelobjekt 1
@@ -273,6 +289,8 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
 
   #Hauptprogramm
 
+highscore = Highscore.new(self)
+
 #Erstellen der Schwimmobjekte
   baumstamm1 = Schwimmobjekt.new(self,"Baumstamm.jpg",800,120,2,200,30)
   baumstamm2 = Schwimmobjekt.new(self,"Baumstamm.jpg",800,200,3,100,30)
@@ -285,7 +303,7 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
   fliege2 = Sammelobjekt.new(self,"fliege.png")
 
 #Erstellen des Frosches
-  frosch = Frosch.new(self,fliege,fliege2)
+  frosch = Frosch.new(self,fliege,fliege2,highscore)
 
 #starte die Schwimmobjektanimation und übergebe das Objekt Frosch
   baumstamm1.start(frosch)
