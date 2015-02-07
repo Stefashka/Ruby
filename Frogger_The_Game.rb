@@ -66,8 +66,8 @@ Shoes.app width: FENSTER_BREITE, height: FENSTER_HOEHE do
       @sammelobjekt2 = fliege2
       @punkte = 0
       @punktausgabe= @app.caption  "0 Punkte" , top: 30, left: 700
-      @timer = 30
-      @timerausgabe = @app.caption "30 Sekunden", top: 60, left: 700
+      @timer = 50
+      @timerausgabe = @app.caption "50 Sekunden", top: 60, left: 700
 
     end
 
